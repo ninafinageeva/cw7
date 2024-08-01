@@ -2,8 +2,6 @@ from datetime import timedelta
 
 from rest_framework.serializers import ValidationError
 
-from habits.models import Habit
-
 
 class RuntimeValidator:
     """
@@ -11,7 +9,8 @@ class RuntimeValidator:
     """
 
     def __call__(self, attrs):
-        if attrs.get("runtime") > timedelta(minutes=2):
+        runtime = attrs.get("runtime")
+        if runtime and runtime > timedelta(minutes=2):
             raise ValidationError(
                 "Время на выполнение должно быть не более 120 секунд."
             )

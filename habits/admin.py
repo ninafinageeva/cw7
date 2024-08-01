@@ -10,6 +10,7 @@ class HabitAdmin(admin.ModelAdmin):
         "user",
         "action",
         "start_at",
+        "execute_at",
         "periodicity",
         "is_public",
         "is_pleasure",
