@@ -15,6 +15,10 @@ class HabitCreateAPIView(CreateAPIView):
     """
 
     serializer_class = HabitSerializer
+    permission_classes = (
+        IsAuthenticated,
+        IsOwner,
+    )
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
